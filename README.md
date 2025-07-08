@@ -38,7 +38,7 @@
         # For consistency regardless of the application, we use variables.
         - Head To settings and change the General name to `job`.
         - In the Query section, Grafana has a built-in function called label values                          `lables_values(job)`
-        - It scans evry metric named `job`.
+        - It scans every metric named `job`.
         - There is a preview section at the base of the variable > edit.
 
 ### Total Requests
@@ -50,7 +50,17 @@
 
 ### Error Rates
 
-        -
-        -
+        Download An API Testing Tool like Postman; I downloaded Postman extension in VS Code.
+        - 
+        
+        - `(sum((increase(http_request_total{job="fastapi-app, status=~"4.."}[15m]) or vector(0)))) + sum((increase(http_request_total{job="fastapi-app", status=~"5.."}[15m]) or vector)) / 
+        sum(increase(http_request_total{job="fastapi-app"}[15m]))`
 
 ### Average Request Duration
+
+        Get Rate Request Duration / Total Requests
+        - sum(rate(http_request_duration_seconds_sum[30m])) / sum(rate(http_request_duration_seconds_count[30m]))
+
+### Requests In Progress
+
+        sum(http_request_in_progress{job="fastapi-app", path!="/metrics"})  
