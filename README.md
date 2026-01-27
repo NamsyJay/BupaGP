@@ -1,4 +1,3 @@
-# This Fork is from RayanSlim
 
 ## This is shows instrumenting Python Apps with Prometheus Metrics  
 
