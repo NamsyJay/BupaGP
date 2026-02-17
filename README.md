@@ -14,16 +14,17 @@
 ### 4) Explore The Application Metrics
 
         - View The Metrics by executing queries. 
+        - include additional metrics.
 
 ### 5) Setup Grafana Dashboard
 
         - Add the Prometheus Data Source in the GUI.
-        - `http:prometheus:9090` (because the prometheus is configured using docker-compose)
+        - `http:prometheus:9090` (because Prometheus is configured using docker-compose)
 
 ### 6) Create The Grafana Dashboard
 
         - Import Grafana-Dashboard json file.
-        - This displays the active queries inside our database.
+        - This displays the active queries inside the database.
 
 ### 7) Creating Panels In Grafana
 
@@ -34,7 +35,7 @@
 
         - `time() - process_start_time_seconds{job="fastapi-app"}`
 
-        # For consistency regardless of the application, we use variables.
+        # For consistency, regardless of the application, we use variables.
         - Head To settings and change the General name to `job`.
         - In the Query section, Grafana has a built-in function called label values                          `lables_values(job)`
         - It scans every metric named `job`.
@@ -49,7 +50,7 @@
 
 ### Error Rates
 
-        Download An API Testing Tool like Postman; I downloaded Postman extension in VS Code.
+        Download an API Testing Tool like Postman; I downloaded the Postman extension in VS Code.
         - 
         
         - `(sum((increase(http_request_total{job="fastapi-app, status=~"4.."}[15m]) or vector(0)))) + sum((increase(http_request_total{job="fastapi-app", status=~"5.."}[15m]) or vector)) / 
