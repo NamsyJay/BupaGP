@@ -1,4 +1,4 @@
-<img width="660" height="640" alt="R (4)" src="https://github.com/user-attachments/assets/f4f64dde-0c1a-4b85-afd9-2edddebc6be6" />
+<img width="320" height="320" alt="R (4)" src="https://github.com/user-attachments/assets/f4f64dde-0c1a-4b85-afd9-2edddebc6be6" />
 
 ## This is shows instrumenting Python Apps with Prometheus Metrics  
 
