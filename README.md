@@ -64,3 +64,11 @@
 ### Requests In Progress
 
         sum(http_request_in_progress{job="fastapi-app", path!="/metrics"})  
+
+### Database Query Performance
+        Tracks slow queries against patient data store.
+        # Average query duration
+        rate(pg_stat_statements_total_time_seconds[5m])/rate(pg_stat_statements_calls_total[5m])
+
+        # Slow queries (over 1 second)
+        pg_stat_statements_mean_time_seconds > 1
