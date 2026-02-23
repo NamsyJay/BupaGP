@@ -1,7 +1,6 @@
 Monitoring Servers with Prometheus & Grafana
 
-
-Head over to the Graph tab in your Prometheus UI (http://localhost:9090) and try pasting these to see your system's health:
+Head over to the Graph tab in your Prometheus UI `(http://localhost:9090)` and try pasting these to see your system's health:
 
 ### 1. Common Metrics to Query
 CPU Usage (Percentage):
