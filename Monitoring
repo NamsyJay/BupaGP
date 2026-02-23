@@ -9,8 +9,9 @@ CPU Usage (Percentage):
 `100 - (avg by (instance) (rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100)`
 
 ### 2. Memory Usage (Percent%):
+
 `node_memory_Active_bytes / node_memory_MemTotal_bytes * 100`
+
 ### 3. Disk Space Available (GB):
 
-Code snippet
-node_filesystem_avail_bytes{mountpoint="/"} / 1024 / 1024 / 1024
+`node_filesystem_avail_bytes{mountpoint="/"} / 1024 / 1024 / 1024`
