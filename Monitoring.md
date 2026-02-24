@@ -3,8 +3,7 @@
 Head over to the Graph tab in your Prometheus UI `(http://localhost:9090)` and 
 paste these to see your system's health:
 
-Importing from Node Exporter API: Select "Import" on the Dashboard page Select Dashboard ID 1860 (This is the official Node Exporter Full dashboard), 
-and it will automatically populate with all your data.
+Import from Node Exporter API: Select "Import" on the Dashboard page Select `Dashboard ID 1860` (This is the official Node Exporter Full dashboard), and it will automatically populate with all your data.
 
 ## Basic Queries
 ### 1. Common Metrics to Query
@@ -21,7 +20,7 @@ CPU Usage (Percentage):
 `node_filesystem_avail_bytes{mountpoint="/"} / 1024 / 1024 / 1024`
 
 ### Production Environment due to strict HIPAA/HITECH compliance and patient safety requirements.
-#### Enhanced Infrastructure Metrics
+#### 1 Enhanced Infrastructure Metrics
 - IO Wait/Disk Latency: If your Electronic Health Record (EHR) database is slow, doctors can't access patient files.
   Metric: `node_disk_io_time_seconds_total`
 - Storage Growth Rates: Healthcare data (scans, logs, records) grows exponentially.
@@ -31,3 +30,10 @@ CPU Usage (Percentage):
       (Alerts if the disk will be full in 24 hours).
 - Network Errors: Dropped packets in a hospital can break real-time monitoring equipment connections.
   Metric: `node_network_receive_errs_total`
+
+#### 2. Security & Compliance Metrics (The "HIPAA" Pillar)
+HIPAA mandates that healthcare facilities track access and integrity; Prometheus can be used to set up suspicious patterns.
+- Unauthorized Access Attempts: Monitor failed login attempts.
+- TLS/SSL Certificate Expiry: Monitor encryption certificates to avoid non-compliance and inaccessibility.
+    Tool: Use the Blackbox Exporter to monitor `probe_ssl_earliest_cert_expiry`.   
+- Audit Log Heartbeats: HIPPA mandates that audit trails must be captured, ensuring that the logging service actually works.
