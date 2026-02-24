@@ -5,20 +5,6 @@ paste these to see your system's health:
 
 Import from Node Exporter API: Select "Import" on the Dashboard page Select `Dashboard ID 1860` (This is the official Node Exporter Full dashboard), and it will automatically populate with all your data.
 
-## Basic Queries
-### 1. Common Metrics to Query
-CPU Usage (Percentage):
-
-`100 - (avg by (instance) (rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100)`
-
-### 2. Memory Usage (Percent- %):
-
-`node_memory_Active_bytes / node_memory_MemTotal_bytes * 100`
-
-### 3. Disk Space Available (GB):
-
-`node_filesystem_avail_bytes{mountpoint="/"} / 1024 / 1024 / 1024`
-
 ### Production Environment due to strict HIPAA/HITECH compliance and patient safety requirements.
 #### 1 Enhanced Infrastructure Metrics
 - IO Wait/Disk Latency: If your Electronic Health Record (EHR) database is slow, doctors can't access patient files.
@@ -51,3 +37,80 @@ Saturation - Is the database connection pool occupied?
 #### Never include PHI (Protected Health Information) in your Prometheus labels.
 - Use generic IDs or anonymized labels only; Do not use `{medical_record_number="12345"}`.
 - This would put PHI into your monitoring database, which usually isn't encrypted or audited to the same level as your primary database, creating a massive compliance risk.
+
+### For Production Grade Monitoring Dashboards 
+#### In real enterprise environments (healthcare, SaaS), 
+- SREs monitor for optimise for:
+    Signal over noise
+    Fast triage
+    Clean alerts
+    Minimal visual clutter
+    Fewer fragile queries
+
+## Basic Queries
+### 1. CPU gauge
+CPU Usage (Percentage):
+
+`100 - (avg by (instance) (rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100)`
+
+### 2. Disk Space Used
+#### Allows only real Linux filesystem
+```
+100 * (
+  1 -
+  (
+    node_filesystem_avail_bytes{
+      instance="$node",
+      fstype!~"tmpfs|overlay|squashfs|nsfs|autofs",
+      mountpoint!~"^/(run|proc|sys|dev|snap|mnt/wsl|mnt/wslg).*"
+    }
+    /
+    node_filesystem_size_bytes{
+      instance="$node",
+      fstype!~"tmpfs|overlay|squashfs|nsfs|autofs",
+      mountpoint!~"^/(run|proc|sys|dev|snap|mnt/wsl|mnt/wslg).*"
+    }
+  )
+)
+```
+
+### 3.Inode Usage Panel
+### This combination prevents:
+- silent filesystem death
+- Docker small-file explosions
+- log rotation failures
+- Kubernetes volume crashes
+
+```
+100 * (
+  1 -
+  (
+    node_filesystem_files_free{
+      instance="$node",
+      fstype=~"ext4|xfs|btrfs",
+      mountpoint!~"^/(run|proc|sys|dev|snap|mnt|usr/lib).*"
+    }
+    /
+    node_filesystem_files{
+      instance="$node",
+      fstype=~"ext4|xfs|btrfs",
+      mountpoint!~"^/(run|proc|sys|dev|snap|mnt|usr/lib).*"
+    }
+  )
+)
+```
+
+### 4. Disk Latency
+#### This metric explains slow applications instantly.
+
+```
+rate(node_disk_read_time_seconds_total{instance="$node"}[5m])
+/
+rate(node_disk_reads_completed_total{instance="$node"}[5m])
+```
+
+```
+rate(node_disk_write_time_seconds_total{instance="$node"}[5m])
+/
+rate(node_disk_writes_completed_total{instance="$node"}[5m])
+```
