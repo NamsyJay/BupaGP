@@ -46,3 +46,8 @@ Traffic - Is there an unexpected spike in patient requests?
 Errors - Are there errors preventing prescriptions and procedures
 Saturation - Is the database connection pool occupied?
 ```
+
+### Critical Advice for Healthcare Data
+#### Never include PHI (Protected Health Information) in your Prometheus labels.
+- Use generic IDs or anonymized labels only; Do not use `{medical_record_number="12345"}`.
+- This would put PHI into your monitoring database, which usually isn't encrypted or audited to the same level as your primary database, creating a massive compliance risk.
