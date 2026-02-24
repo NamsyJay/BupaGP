@@ -37,3 +37,12 @@ HIPAA mandates that healthcare facilities track access and integrity; Prometheus
 - TLS/SSL Certificate Expiry: Monitor encryption certificates to avoid non-compliance and inaccessibility.
     Tool: Use the Blackbox Exporter to monitor `probe_ssl_earliest_cert_expiry`.   
 - Audit Log Heartbeats: HIPPA mandates that audit trails must be captured, ensuring that the logging service actually works.
+
+#### 3. Application-Level ""
+All applications must be instrumented with these four metrics.
+```
+Latency - Can a staff member pull up a chart in seconds?
+Traffic - Is there an unexpected spike in patient requests? 
+Errors - Are there errors preventing prescriptions and procedures
+Saturation - Is the database connection pool occupied?
+```
