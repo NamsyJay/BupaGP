@@ -19,7 +19,7 @@ Import from Node Exporter API: Select "Import" on the Dashboard page Select `Das
 - Network Errors: Dropped packets in a hospital can break real-time monitoring equipment connections.
   Metric:
   ```
-  node_network_receive_errs_total`
+  node_network_receive_errs_total
   ```
 #### 2. Security & Compliance Metrics (The "HIPAA" Pillar)
 HIPAA mandates that healthcare facilities track access and integrity; Prometheus can be used to set up suspicious patterns.
