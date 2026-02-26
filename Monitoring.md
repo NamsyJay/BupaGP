@@ -12,11 +12,15 @@ Import from Node Exporter API: Select "Import" on the Dashboard page Select `Das
 - Storage Growth Rates: Healthcare data (scans, logs, records) grows exponentially.
   Use a "Time-to-Full" alert rather than just a 90% threshold.
     Query:
-      `predict_linear(node_filesystem_free_bytes[1h], 3600 * 24) < 0`
+      ```
+  predict_linear(node_filesystem_free_bytes[1h], 3600 * 24) < 0
+      ```
       (Alerts if the disk will be full in 24 hours).
 - Network Errors: Dropped packets in a hospital can break real-time monitoring equipment connections.
-  Metric: `node_network_receive_errs_total`
-
+  Metric:
+  ```
+  node_network_receive_errs_total`
+  ```
 #### 2. Security & Compliance Metrics (The "HIPAA" Pillar)
 HIPAA mandates that healthcare facilities track access and integrity; Prometheus can be used to set up suspicious patterns.
 - Unauthorized Access Attempts: Monitor failed login attempts.
