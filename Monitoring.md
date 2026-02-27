@@ -118,3 +118,24 @@ rate(node_disk_write_time_seconds_total{instance="$node"}[5m])
 /
 rate(node_disk_writes_completed_total{instance="$node"}[5m])
 ```
+
+### 5. System Availability (Last 30 Days)
+### This is executive-friendly and powerful.
+
+```
+100 * avg_over_time(up{instance="$node"}[30d])
+```
+Set:
+- Visualization → Stat
+- Unit → Percent (0-100)
+- Calculation → Last
+
+### Why This Is Powerful
+You can say:
+“The system maintained 99.99% availability over the last 30 days.”
+
+That translates directly into:
+- Trust.
+- SLA discussion.
+- Revenue protection.
+- Compliance posture.
