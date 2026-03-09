@@ -1,10 +1,15 @@
 <img width="1280" height="714" alt="eb3ddb2e-2ee0-4af0-9501-71e4d0d8e465-Photoroom" src="https://github.com/user-attachments/assets/c956d16d-97db-4030-8397-102b38934be5" />
 
-# Vitaleeds
-"Connecting every system, protecting every patient — delivering always-on digital health infrastructure that clinical teams can trust."
+Vitalync helps connect every system, protecting every patient by deliveriing always-on digital helath infrastructure that clinical teams can trust
 
 
+## Security and Privacy
+Vitalync is SOC2 and HIPAA compliant. Learn more about our security practices.
 
+## VITALYNC DASHBOARD
+Vitalync brings businsess and hospital data into a centralised dashboard. It serves over 10k plus patients. Through standardisation, consolidatng and hydrating data with medical code, Vitalync delivers rich and comprehensive patient data at the point-of-care.
+
+<img width="1850" height="744" alt="Screenshot 2026-03-09 at 18-25-34 Vitalync — Executive Service Health - Dashboards - Grafana" src="https://github.com/user-attachments/assets/af7d9e7c-4543-4847-a665-1b44e83816ac" />
 
 ## STEPS
 
@@ -76,3 +81,9 @@
 
         # Slow queries (over 1 second)
         pg_stat_statements_mean_time_seconds > 1
+
+## License
+
+Distributed under the AGPLv3 License. See LICENSE for more information.
+
+Copyright © Vitalync 2025-present
