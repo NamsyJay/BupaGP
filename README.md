@@ -11,6 +11,12 @@ Vitalync brings businsess and hospital data into a centralised dashboard. It ser
 
 <img width="1850" height="744" alt="Screenshot 2026-03-09 at 18-25-34 Vitalync — Executive Service Health - Dashboards - Grafana" src="https://github.com/user-attachments/assets/af7d9e7c-4543-4847-a665-1b44e83816ac" />
 
+VITALYNC — Mock Prometheus Exporter                      ║
+║         Client Demo Mode · Realistic NHS Service Data            ║
+║                                                                  ║
+║  Serves live-updating metrics on http://localhost:9100/metrics   ║
+║  Pure Python 3 — zero dependencies required 
+
 ## STEPS
 
 ### 1) Clone The Repository
