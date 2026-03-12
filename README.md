@@ -1,4 +1,4 @@
-<img width="1280" height="714" alt="eb3ddb2e-2ee0-4af0-9501-71e4d0d8e465-Photoroom" src="https://github.com/user-attachments/assets/c956d16d-97db-4030-8397-102b38934be5" />
+![Uploading Gemini_Generated_Image_h42sh3h42sh3h42s-Photoroom.png…]()
 
 Vitalync helps connect every system, protecting every patient by deliveriing always-on digital helath infrastructure that clinical teams can trust
 
